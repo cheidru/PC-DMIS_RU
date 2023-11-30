@@ -1,0 +1,15 @@
+#lang-rus:checked ~ #lanru {
+    display: block;
+}
+
+#lang-rus:checked ~ #lanen {
+    display: none;
+}
+
+#lang-eng:checked ~ #lanru {
+    display: none;
+}
+
+#lang-eng:checked ~ #lanen {
+    display: block;
+}

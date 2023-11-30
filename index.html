@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- https://docs.hexagonmi.com/pcdmis/2019.1/en/helpcenter/mergedProjects/cmm/tutorial/Create_a_New_Measurement_Routine.htm     -->
+    <input type="radio" name="lang-select" id="lang-rus" checked>
+    <label for="lang-rus">rus</label>
+    <input type="radio" name="lang-select" id="lang-eng">
+    <label for="lang-eng">eng</label>
+
+    <h1 class="lanru">PC-DMIS КИМ Руководство</h1>
+    <h1 class="lanen">PC-DMIS CMM Tutorial</h1>
+
+    <p class="lanru">Этот раздел поможет Вам сформировать базовый процесс измерения. Когда Вы его сформируете, он позволит Вам
+        произвести несколько параметров с помощью Вашей КИМ (координатно-измерительной машины) и записать результаты. Это руководство предполагает наличие
+        онлайн лицензии для PC-DMIS. Даже если ее у Вас нет, Вы можете пройти многие из шагов этого руководства 
+        в оффлайн режиме.</p>
+    <p class="lanen">This section helps you create a basic measurement routine. Once you create it, the measurement 
+        routine should be able to measure a few features with your CMM (coordinate measuring machine) and report the results. This tutorial assumes 
+        that you have an online license of PC-DMIS. Even if you do not have an online license of PC-DMIS, you can follow 
+        through many of the tutorial's steps in Offline mode.</p>
+
+    <p class="lanru">Это руководство также предлагает общий обзор некоторых возможностей PC-DMIS.</p>
+    <p class="lanen">ЭThe tutorial also provides a high-level view of some of what PC-DMIS can do.</p>
+
+    <div id="hint">
+        <div id="hint-img"></div>
+        <div id="txt-wrapper">
+            <p class="lanru">Если у Вас возникнут вопросы, Вы можете в любой момент использовать базовую документацию
+                PC-DMIS для получения дополнительной информации.</p>
+            <p class="lanen">If you have any questions, you can use the PC-DMIS Core documentation at any time to get 
+                more information. Also, many tutorial steps have links to applicable PC-DMIS Core documentation topics.</p>
+        </div>        
+    </div>
+
+    <h2 class="lanru">Step 1: Start Up and Home the CMM</h2>
+    <h2 class="lanen">Step 1: Start Up and Home the CMM</h2>
+
+    <p class="lanru">Вкоючите контроллер и запустите PC-DMIS. После того, как машина переместится в нулевую
+        позицию и остановится, вы можете начать обучение.</p>  
+    <p class="lanen">Power on the controller and start PC-DMIS. After the machine moves to its home 
+        position and stops, you are ready to start the tutorial's first step.</p>
+
+    <p class="lanru">Вы можете использовать PC-DMIS с Вашей КИМ, чтобы разработать программы измерения и 
+        потом запускать эти программы для проверки Ваших деталей. Чтобы использовать PC-DMIS с КИМ, 
+        Вам нужно запустить PC-DMIS в режиме Online. Вам также нужно проверить что компьютер, на котором установлена
+        программа PC-DMIS, подключен к Вашей КИМ.</p>        
+    <p class="lanen">You can use PC-DMIS with your CMM to develop measurement routines and then run those routines 
+        to inspect your parts. To use PC-DMIS with a CMM, you need to run PC-DMIS in Online mode. You also need to 
+        make sure the PC-DMIS computer can communicate with your CMM.</p>
+        
+    <div id="hint">
+        <div id="hint-img"></div>
+        <div id="txt-wrapper">
+            <p class="lanru">При работающем режиме Online также можно составлять программу в оеэтме Offline.</p>
+            <p class="lanen">Offline programming techniques still work while in Online mode.</p>
+        </div>        
+    </div>
+
+    <h3 class="lanru">Включение и нуление КИМ для работы с PC-DMIS Online</h3> 
+    <h3 class="lanen">CMM Startup and Homing Procedure for PC-DMIS Online</h3>
+
+<ol>
+    <li class="lanru">Если Ваша модель КИМ требует подачи сжатого воздуха, включите сжатый воздух.</li>
+    <li class="lanen">If you have a CMM that requires air pressure, turn on the air to the CMM.</li>
+    <li class="lanru">Подключите контроллер к электропитанию.
+        <ul>
+            <li>Обратите внимание на большой вращающийся переключатель, кнопку включения/выключения 
+                (или клавишу выключения). Кнопка или клавиша выключения вероятно также встроена в боковую
+                панель КИМ или рабочей станции. Включите клавишу или переключатель, чтобы стартовать контроллер.</li>
+            <li>Все лампочки на пульте управления загорятся примерно на 45 секунд. После этого некоторые из лампочек
+                погаснут.</li>
+        </ul>
+        <img src="./assets/Step1/picture_jog_box.gif" alt="Изображение пульта управления">
+    </li>
+    <li class="lanen">Power on the controller.
+        <ul>
+            <li>Look for a large rotary switch, an on/off key, or a small rocker switch. The key or 
+                switch is likely on the controller mounted on the back of the CMM or workstation. 
+                Flip the switch or turn the key to start the controller.</li>
+            <li>All of the LEDs on the jog box (hand-held controller with a joy stick) illuminate for 
+                about 45 seconds. After that time, several LEDs turn off.</li>
+        </ul>
+        <img src="./assets/Step1/picture_jog_box.gif" alt="jog box image">
+    </li>
+    
+
+    <li class="lanru">Включеите Ваш компьютер и периферийные устройства.</li>
+    <li class="lanen">Power on your computer and all of its peripherals.</li>
+
+    <li class="lanru">Войдите в операционную систему.</li>
+    <li class="lanen">Log on to your computer.</li>
+
+    <li class="lanru">Запустите программу PC-DMIS в режиме Online через стартовую панель Windows или щелкнув по
+        ярлыку программы на рабочем столе.</li>
+    <li class="lanen">To start PC-DMIS in Online mode, from the Windows Start menu, 
+        locate the PC-DMIS 2019 R1 Online shortcut and click on it.</li>
+
+    <li class="lanru">Когда программа PC-DMIS запустится, на экране появится сообщение: 
+        <i>Включите машину (при необходимости), затем нажмите OK чтобы начать нулирование.</i></li>
+    <li class="lanen">Once PC-DMIS opens, a message appears on the screen: <i>Do a machine 
+        start (if needed), then press OK to home.</i></li>
+
+    <li class="lanru">На пульте нажмите кнопку, которая запускает машину, например: 
+        Mach Start, или Start. Держите ее нажатой несколько секунд, пока мигает лампочка.
+        На некоторых моделях кнопка находится как это указано на изображении:
+        <img src="./assets/Step1/picture2_jog_box.gif" alt="кнопка на пульте включить машину"></li>
+    <li class="lanen">On your jog box, press the button that starts the machine, for example: 
+        Mach Start, or Start. Hold it for several seconds until the LED illuminates. On some models, 
+        the button is here:
+        <img src="./assets/Step1/picture2_jog_box.gif" alt="starts the machine button on jog box"></li>
+
+    
+    <li class="lanru">КИМ должен переместиться в стартовую позицию. Стартовая позиция позволяет КИМ правильно 
+        установить нулевую позицию машины и параметры машины (такие как скорость, предельные габариты и тд). 
+        Нажмите кнопку OK на сообщении, чтобы нулировать машину. КИМ медленно переместится в стартовую позицию.
+        Эта позиция является нулевой позицией машины для всех осей.</li>
+    <li class="lanen">The CMM needs to move to a home position. The home position enables it to properly 
+        set the machine's zero position and enable the machine's parameters (such as speed, size limits, 
+        and so on). Click the OK button in the above PC-DMIS message to home the machine. The CMM slowly 
+        travels to its home position. This position is the machine's zero position for all the axes.</li>
+
+        <div id="warn">
+            <div id="warn-img"></div>
+            <div id="txt-wrapper">
+                <p class="lanru">ОСТОРОЖНО! Когда Вы совершаете эти действия, машин движется. Чтобы избежать
+                    травм, располагайтесь в стороне от машины. Чтобы избежать повреждения машины, установите
+                низкую скорость движения машины</p>
+                <p class="lanen">WARNING: When you do this, the machine moves. To avoid injury, stay clear of the machine. 
+                    To avoid hardware damage, run the machine at a slower speed.</p>
+            </div>        
+        </div>
+</ol>
+
+<h3 class="lanru">Изменение параметров машины</h3> 
+<h3 class="lanen">Changing the Machine's Parameters</h3>
+
+<p class="lanru">Вы можете установить множество параметров, чтобы контролировать скорость
+    и перемещение машины. Если Вам понадобится изменить эти параметры, посмотрите раздел
+    "Установака пользовательских параметров" в базовой документации PC-DMIS.</p>        
+<p class="lanen">You can set numerous parameters to control the machine's speed and motion. 
+    If you need to change your machine's parameters, see "Setting Your Preferences" in the 
+    PC-DMIS Core documentation.</p>
+
+<h2 class="lanru">Step 2: Создание новой программы измерения</h2>        
+<h2 class="lanen">Step 2: Create a New Measurement Routine</h2>
+
+<p class="lanru">Следующие шаги позволят создать новую программу измерения с размерами в мм.</p>        
+<p class="lanen">This step creates a new measurement routine with millimeters as your units.</p>
+
+<ol>
+    <li class="lanru"></li>        
+    <li class="lanen"></li>
+
+    <li class="lanru"></li>        
+    <li class="lanen"></li>
+
+    <li class="lanru"></li>        
+    <li class="lanen"></li>
+
+    <li class="lanru"></li>        
+    <li class="lanen"></li>
+
+    <li class="lanru"></li>        
+    <li class="lanen"></li>
+
+    <li class="lanru"></li>        
+    <li class="lanen"></li>
+
+    <li class="lanru"></li>        
+    <li class="lanen"></li>
+
+    <li class="lanru"></li>        
+    <li class="lanen"></li>
+
+    <li class="lanru"></li>        
+    <li class="lanen"></li>
+
+    <li class="lanru"></li>        
+    <li class="lanen"></li>
+
+    <li class="lanru"></li>        
+    <li class="lanen"></li>
+</ol>
+
+
+
+</body>
+
+<p class="lanru"></p>        
+<p class="lanen"></p>
+
+
+</html>
